@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap with JavaScript Plugins</title>
+
+  <!-- Link to local Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+  <div class="container mt-5 text-center">
+    <h1 class="text-primary">Bootstrap 5 with JS Plugins</h1>
+    <p class="lead">This page includes Bootstrap's JavaScript plugins via <code>bootstrap.bundle.min.js</code>.</p>
+
+    <!-- Example: A Bootstrap Modal Trigger -->
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Launch Demo Modal
+    </button>
+
+    <!-- Bootstrap Modal Component -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            This is a Bootstrap modal powered by local JS plugins.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Link to local Bootstrap JS Bundle (includes Popper) -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
