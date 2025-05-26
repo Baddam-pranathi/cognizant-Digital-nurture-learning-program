@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Event Feedback with Event Handling</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      background-color: #f0f4f8;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #444;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 6px;
+      border: 1.5px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+    }
+    #feeDisplay {
+      margin-top: 8px;
+      font-weight: bold;
+      color: #007BFF;
+    }
+    #phoneError {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+    #confirmation {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+      border-radius: 5px;
+      font-weight: bold;
+      text-align: center;
+    }
+    #charCount {
+      margin-top: 5px;
+      font-size: 0.9rem;
+      color: #555;
+      text-align: right;
+    }
+    #eventImage {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 300px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #eventImage.enlarged {
+      transform: scale(1.8);
+      z-index: 1000;
+      position: relative;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Event Feedback Form</h2>
+
+  <form id="feedbackForm" novalidate>
+    <label for="phone">Phone Number *</label>
+    <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required />
+    <div id="phoneError"></div>
+
+    <label for="eventSelect">Select Event *</label>
+    <select id="eventSelect" name="eventSelect" required>
+      <option value="" disabled selected>Select an event</option>
+      <option value="music" data-fee="50">Music Festival</option>
+      <option value="art" data-fee="40">Art Workshop</option>
+      <option value="sports" data-fee="30">Sports Day</option>
+      <option value="community" data-fee="20">Community Meet</option>
+    </select>
+    <div id="feeDisplay"></div>
+
+    <label for="feedback">Your Feedback</label>
+    <textarea id="feedback" name="feedback" rows="4" placeholder="Type your feedback here..."></textarea>
+    <div id="charCount">0 characters</div>
+
+    <button type="submit" id="submitBtn">Submit Feedback</button>
+  </form>
+
+  <div id="confirmation"></div>
+
+  <img id="eventImage" src="https://via.placeholder.com/300x180.png?text=Event+Image" alt="Event" title="Double-click to enlarge" />
+
+  <script>
+    const phoneInput = document.getElementById('phone');
+    const phoneError = document.getElementById('phoneError');
+    const eventSelect = document.getElementById('eventSelect');
+    const feeDisplay = document.getElementById('feeDisplay');
+    const feedback = document.getElementById('feedback');
+    const charCount = document.getElementById('charCount');
+    const submitBtn = document.getElementById('submitBtn');
+    const confirmation = document.getElementById('confirmation');
+    const eventImage = document.getElementById('eventImage');
+    const form = document.getElementById('feedbackForm');
+
+    phoneInput.onblur = function() {
+      const val = phoneInput.value.trim();
+      const phoneRegex = /^[0-9\s\-+()]{10,15}$/;
+      if (val === '') {
+        phoneError.textContent = 'Phone number is required.';
+      } else if (!phoneRegex.test(val)) {
+        phoneError.textContent = 'Invalid phone number format.';
+      } else {
+        phoneError.textContent = '';
+      }
+    };
+
+    eventSelect.onchange = function() {
+      const selectedOption = eventSelect.options[eventSelect.selectedIndex];
+      const fee = selectedOption.getAttribute('data-fee');
+      if(fee){
+        feeDisplay.textContent = `Event Fee: $${fee}`;
+      } else {
+        feeDisplay.textContent = '';
+      }
+    };
+
+    submitBtn.onclick = function(event) {
+      event.preventDefault(); 
+
+      phoneInput.onblur();
+
+      if(phoneError.textContent !== '') {
+        confirmation.textContent = 'Please correct errors before submitting.';
+        confirmation.style.color = 'red';
+        return;
+      }
+
+      if(eventSelect.value === '') {
+        confirmation.textContent = 'Please select an event.';
+        confirmation.style.color = 'red';
+        return;
+      }
+
+      confirmation.style.color = '#155724';
+      confirmation.textContent = 'Thank you for your feedback!';
+
+      form.reset();
+      feeDisplay.textContent = '';
+      charCount.textContent = '0 characters';
+    };
+
+    eventImage.ondblclick = function() {
+      eventImage.classList.toggle('enlarged');
+    };
+
+    feedback.addEventListener('input', function() {
+      const length = feedback.value.length;
+      charCount.textContent = `${length} character${length !== 1 ? 's' : ''}`;
+    });
+  </script>
+
+</body>
+</html>
