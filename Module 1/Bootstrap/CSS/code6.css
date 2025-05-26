@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Link & List Styling</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header>
+    <h1>City Portal Navigation</h1>
+  </header>
+
+  <nav>
+    <ul class="nav-menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <h2>Key Features</h2>
+    <ul class="feature-list">
+      <li>Responsive Design</li>
+      <li>Accessibility Support</li>
+      <li>Real-time Updates</li>
+      <li>Easy Navigation</li>
+    </ul>
+  </section>
+
+</body>
+</html>
+/* =======================
+   Link Styling
+   ======================= */
+
+/* Default link */
+a:link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Hover effect */
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Active link */
+a:active {
+  color: #d63384;
+}
+
+/* Visited link */
+a:visited {
+  color: #6610f2;
+}
+
+
+/* =======================
+   Navigation List Styling
+   ======================= */
+.nav-menu {
+  list-style-type: none;         /* Remove bullets */
+  list-style-position: inside;
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-menu li {
+  padding: 10px;
+  margin: 0;
+}
+
+/* =======================
+   Feature List Styling
+   ======================= */
+.feature-list {
+  list-style-type: square;       /* Custom bullet */
+  list-style-position: inside;
+  padding-left: 20px;
+}
+
+.feature-list li {
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
