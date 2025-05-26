@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Responsive Display Utilities</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+<body>
+
+  <div class="container py-5">
+
+    <!-- Visible only on small screens (xs-sm) -->
+    <div class="d-block d-md-none bg-primary text-white p-3 mb-3 rounded">
+      <h4>Mobile Only Section</h4>
+      <p>This section is visible <strong>only</strong> on small screens (less than md).</p>
+    </div>
+
+    <!-- Hidden on small screens, visible as block on md and up -->
+    <div class="d-none d-md-block bg-warning text-dark p-3 mb-3 rounded">
+      <h4>Tablet & Up Section</h4>
+      <p>This section is hidden on small screens, visible as block on md and larger.</p>
+    </div>
+
+    <!-- Hidden on small and medium, flex on lg and up -->
+    <div class="d-none d-lg-flex bg-success text-white p-3 rounded justify-content-around">
+      <div>
+        <h5>Flex Item 1</h5>
+        <p>Shown only on large (lg) and up screens as flex container.</p>
+      </div>
+      <div>
+        <h5>Flex Item 2</h5>
+        <p>Flex layout allows side-by-side content here.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
