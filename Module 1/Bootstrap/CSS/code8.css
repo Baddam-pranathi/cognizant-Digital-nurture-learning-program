@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Box Model & Layout Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <section class="eventCard">
+    <h2>Annual Tech Conference</h2>
+    <p>Join industry leaders and innovators for a day of insight and networking.</p>
+  </section>
+
+  <form class="registerForm">
+    <h3>Register</h3>
+    <input type="text" placeholder="Your Name" class="highlighted" />
+    <input type="email" placeholder="Your Email" />
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="visibility-box">
+    <div class="hidden-box">I am hidden (visibility: hidden)</div>
+    <div class="none-box">I am removed (display: none)</div>
+  </div>
+
+</body>
+</html>
+/* ===========================
+   Box Model Styling
+   =========================== */
+
+/* Card section spacing */
+.eventCard {
+  border: 2px solid #007bff;
+  padding: 20px;
+  margin: 30px;
+  background-color: #f0f8ff;
+  border-radius: 10px;
+}
+
+/* Form input highlighting */
+.registerForm input.highlighted {
+  outline: 2px solid #28a745;
+  margin-bottom: 10px;
+  padding: 8px;
+  display: block;
+}
+
+/* Regular input styling */
+.registerForm input {
+  padding: 8px;
+  margin-bottom: 10px;
+  display: block;
+  width: 250px;
+}
+
+/* ===========================
+   Visibility Demo
+   =========================== */
+
+.visibility-box {
+  margin-top: 40px;
+}
+
+.hidden-box {
+  background-color: #ffeeba;
+  padding: 10px;
+  margin-bottom: 10px;
+  visibility: hidden; /* Takes space, not shown */
+}
+
+.none-box {
+  background-color: #f8d7da;
+  padding: 10px;
+  display: none; /* Removed completely */
+}
