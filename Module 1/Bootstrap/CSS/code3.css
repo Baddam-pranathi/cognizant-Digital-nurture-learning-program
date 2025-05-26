@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selectors Playground</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header id="mainHeader">
+    <h1>Welcome to the Event Hub</h1>
+  </header>
+
+  <section class="eventCard">
+    <h2>Music Festival</h2>
+    <h3>Live in New York</h3>
+    <p>Join us for an unforgettable night of music and fun.</p>
+  </section>
+
+  <section class="eventCard">
+    <h2>Tech Conference</h2>
+    <h3>Silicon Valley, CA</h3>
+    <p>Explore the future of technology and innovation.</p>
+  </section>
+
+</body>
+</html>
+/* =======================
+   Global Reset
+   ======================= */
+
+/* Universal selector to reset margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =======================
+   Element Selector
+   ======================= */
+
+/* Style for all h2 elements */
+h2 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+/* =======================
+   ID Selector
+   ======================= */
+
+/* Style for banner header with ID */
+#mainHeader {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    margin-bottom: 30px;
+}
+
+/* =======================
+   Class Selector
+   ======================= */
+
+/* Style for event containers */
+.eventCard {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 15px auto;
+    max-width: 600px;
+    border-radius: 8px;
+}
+
+/* =======================
+   Grouping Selector
+   ======================= */
+
+/* Style for h3 and p together */
+h3, p {
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    margin-bottom: 10px;
+}
