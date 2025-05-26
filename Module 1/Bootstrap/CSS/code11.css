@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Debug Example</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Responsive Debug Page</h1>
+    <nav class="main-nav">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="content-box">
+      <h2>Welcome!</h2>
+      <p>This layout is used for testing responsiveness and debugging with browser DevTools and Visual Studio Code.</p>
+    </section>
+    <section class="content-box">
+      <h2>Resize & Inspect</h2>
+      <p>Use Chrome DevTools (Ctrl+Shift+I) → Toggle Device Toolbar to simulate smaller screen sizes. Inspect this layout and modify styles live.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 DevTools Demo</p>
+  </footer>
+
+</body>
+</html>
+/* === Layout Styling === */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.site-header {
+  background-color: #004080;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.main-content {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  justify-content: space-around;
+}
+
+.content-box {
+  background: #f0f0f0;
+  padding: 20px;
+  width: 45%;
+  border: 1px solid #ccc;
+}
+
+.site-footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+/* === Responsive Fix for Small Screens === */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .content-box {
+    width: 90%;
+  }
+
+  .main-nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
