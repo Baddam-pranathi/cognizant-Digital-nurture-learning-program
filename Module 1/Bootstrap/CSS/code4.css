@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>City Council Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="main-header">
+    <h1>Welcome to City Council Portal</h1>
+  </header>
+
+  <section class="news-section">
+    <h2>Latest News</h2>
+    <p>Stay informed with the most recent developments in your community.</p>
+  </section>
+
+  <section class="events-section">
+    <h2>Upcoming Events</h2>
+    <p>Check out upcoming city events and community programs.</p>
+  </section>
+
+</body>
+</html>
+/* ================
+   Base Styling
+   ================ */
+
+/* Body: fallback color + background image */
+body {
+  background-color: #e0f7fa; /* fallback HEX color */
+  background-image: url('city-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #333; /* default text color */
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+/* ================
+   Header Styling
+   ================ */
+
+/* Gradient header using HEX and RGBA */
+.main-header {
+  background: linear-gradient(90deg, #004d40, rgba(0, 150, 136, 0.8));
+  color: #ffffff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* ================
+   Section Styling
+   ================ */
+
+/* News Section header with a soft gradient */
+.news-section h2 {
+  background: linear-gradient(to right, #00796b, #26a69a);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+/* Events Section header with a different gradient */
+.events-section h2 {
+  background: linear-gradient(to right, rgba(255, 87, 34, 0.9), rgba(255, 193, 7, 0.9));
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+/* Paragraph text using RGBA */
+p {
+  color: rgba(0, 0, 0, 0.8);
+  padding: 15px;
+}
