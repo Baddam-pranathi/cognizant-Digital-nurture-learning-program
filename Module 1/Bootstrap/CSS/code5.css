@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Typography Showcase</title>
+
+  <!-- ✅ Google Font Import using <link> -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="page-header">
+    <h1>Typography and Readability</h1>
+    <p class="subtitle">Improving the look and feel of your content</p>
+  </header>
+
+  <section class="description">
+    <h2>About Our Approach</h2>
+    <p>
+      Our mission is to <strong>enhance readability</strong> and deliver visually engaging experiences.
+      Typography matters—it shapes the way we perceive content, whether online or in print.
+    </p>
+  </section>
+
+</body>
+</html>
+/* ===============================
+   Typography: Fonts and Text
+   =============================== */
+
+/* Global font and body settings */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+  padding: 30px;
+  background-color: #fafafa;
+}
+
+/* Header styles with secondary font */
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: #7f8c8d;
+  text-transform: uppercase;
+}
+
+/* Section heading */
+.description h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00695c;
+  margin-bottom: 10px;
+}
+
+/* Paragraph styling for readability */
+.description p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  letter-spacing: 0.4px;
+  text-align: justify;
+  color: #444;
+}
