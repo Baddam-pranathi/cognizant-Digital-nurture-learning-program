@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Column Reordering</title>
+  <!-- Link to Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Reordering Columns Example</h2>
+
+    <div class="row">
+      <!-- Column A: Will appear second on medium and up -->
+      <div class="col-12 col-md-6 order-md-2 mb-3">
+        <div class="p-4 bg-warning text-dark text-center rounded">Column A (order-md-2)</div>
+      </div>
+
+      <!-- Column B: Will appear first on medium and up -->
+      <div class="col-12 col-md-6 order-md-1 mb-3">
+        <div class="p-4 bg-info text-white text-center rounded">Column B (order-md-1)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Link to Bootstrap JS Bundle -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
