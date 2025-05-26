@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Save User Preferences</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 8px;
+    }
+    label, select, button {
+      display: block;
+      width: 100%;
+      margin-top: 15px;
+      font-size: 1.1rem;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Select Your Preferred Event Type</h1>
+
+  <label for="eventType">Event Type:</label>
+  <select id="eventType">
+    <option value="">-- Select an event --</option>
+    <option value="music">Music Concert</option>
+    <option value="sports">Sports Event</option>
+    <option value="workshop">Workshop</option>
+    <option value="community">Community Gathering</option>
+  </select>
+
+  <button id="clearPrefsBtn">Clear Preferences</button>
+
+  <script>
+    const eventSelect = document.getElementById('eventType');
+    const clearBtn = document.getElementById('clearPrefsBtn');
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedEvent = localStorage.getItem('preferredEvent');
+      if (savedEvent) {
+        eventSelect.value = savedEvent;
+      }
+    });
+
+    eventSelect.addEventListener('change', () => {
+      const selectedValue = eventSelect.value;
+      if(selectedValue) {
+        localStorage.setItem('preferredEvent', selectedValue);
+      } else {
+        localStorage.removeItem('preferredEvent');
+      }
+    });
+    clearBtn.addEventListener('click', () => {
+      localStorage.clear();
+      sessionStorage.clear();
+      eventSelect.value = "";
+      alert('Preferences cleared!');
+    });
+  </script>
+
+</body>
+</html>
