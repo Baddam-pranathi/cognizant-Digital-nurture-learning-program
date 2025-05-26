@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Styling Methods</title>
+
+  <!-- Internal CSS -->
+  <style>
+    body {
+      background-color: #f0f8ff; /* light blue background */
+    }
+  </style>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Inline CSS applied -->
+  <h1 style="color: red;">This heading is styled with inline CSS</h1>
+
+  <!-- Reusable class from external CSS -->
+  <h2 class="header-title">This heading is styled via external CSS</h2>
+
+  <p>This paragraph uses styles defined in the external stylesheet.</p>
+
+  <footer class="site-footer">
+    <p>© 2025 Styled Page</p>
+  </footer>
+
+</body>
+</html>
+/* Header styles */
+.header-title {
+  color: #2c3e50;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Paragraph styles */
+p {
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Footer styles */
+.site-footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
