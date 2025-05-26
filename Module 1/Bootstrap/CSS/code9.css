@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Community Bulletin</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <section class="news-article">
+    <h1>Community Bulletin</h1>
+    <p>
+      The annual community picnic is scheduled for July 10th at Central Park. Everyone is welcome to join for a day of games, food, and music. Local bands will be performing and there will be plenty of activities for children and adults alike.
+    </p>
+    <p>
+      Volunteers are needed for setup, food service, and cleanup. If you're interested, please contact the community center. There will also be a bake sale organized by the neighborhood association, with proceeds going to park improvement projects.
+    </p>
+    <p>
+      Other upcoming events include the city-wide garage sale and the outdoor movie nights starting in August. Be sure to check the community calendar for more details.
+    </p>
+  </section>
+
+</body>
+</html>
+/* ===========================
+   Multi-Column News Styling
+   =========================== */
+
+.news-article {
+  column-count: 2;
+  column-gap: 30px;
+  column-rule: 1px solid gray;
+  padding: 20px;
+  max-width: 800px;
+  margin: 40px auto;
+  font-family: Georgia, serif;
+  background-color: #fdfdfd;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.news-article h1 {
+  column-span: all; /* Optional for modern browsers */
+  text-align: center;
+  margin-bottom: 20px;
+}
