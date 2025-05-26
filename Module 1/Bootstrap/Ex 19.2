@@ -1,0 +1,31 @@
+// scss/custom.scss
+
+// Import your variable overrides first
+@import "custom-variables";
+
+// Now import Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Optional custom styles after Bootstrap
+body {
+  background-color: #f8f9fa;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap Customized</title>
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+<body>
+
+  <div class="container py-5">
+    <h1 class="text-primary">Customized Bootstrap Primary Color & Border Radius</h1>
+    <button class="btn btn-primary">Primary Button</button>
+    <button class="btn btn-secondary rounded-pill mt-3">Secondary with Pill Radius</button>
+  </div>
+
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
