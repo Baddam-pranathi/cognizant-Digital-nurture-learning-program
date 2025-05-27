@@ -1,0 +1,28 @@
+from collections import Counter
+
+# Sample session data linked to events
+sessions = [
+    {"event": "Tech Meetup", "session_id": 1},
+    {"event": "Tech Meetup", "session_id": 2},
+    {"event": "AI Summit", "session_id": 3},
+    {"event": "AI Summit", "session_id": 4},
+    {"event": "AI Summit", "session_id": 5},
+    {"event": "Startup Expo", "session_id": 6},
+    {"event": "Hackathon", "session_id": 7},
+    {"event": "Data Science Bootcamp", "session_id": 8},
+    {"event": "Data Science Bootcamp", "session_id": 9},
+]
+
+# Count sessions per event
+session_counts = Counter(session["event"] for session in sessions)
+
+# Find the maximum session count
+max_sessions = max(session_counts.values())
+
+# List all events with the maximum number of sessions
+events_max_sessions = [event for event, count in session_counts.items() if count == max_sessions]
+
+# Output
+print(f"Event(s) with the maximum number of sessions ({max_sessions} sessions):")
+for event in events_max_sessions:
+    print(f"- {event}")
