@@ -1,0 +1,41 @@
+from datetime import datetime, timedelta
+from collections import Counter
+
+# Sample user registration data with registration dates (YYYY-MM-DD)
+user_registrations = [
+    {"user": "Sanya", "registration_date": "2025-05-21"},
+    {"user": "Alex", "registration_date": "2025-05-22"},
+    {"user": "Jordan", "registration_date": "2025-05-22"},
+    {"user": "Maya", "registration_date": "2025-05-23"},
+    {"user": "Arjun", "registration_date": "2025-05-24"},
+    {"user": "Priya", "registration_date": "2025-05-25"},
+    {"user": "Karan", "registration_date": "2025-05-25"},
+    {"user": "Riya", "registration_date": "2025-05-26"},
+    {"user": "Dev", "registration_date": "2025-05-26"},
+    {"user": "Aisha", "registration_date": "2025-05-26"},
+    {"user": "Neha", "registration_date": "2025-05-27"},
+]
+
+# Today’s date (assuming today is 2025-05-27 for this example)
+today = datetime.strptime("2025-05-27", "%Y-%m-%d")
+
+# Calculate the date 7 days ago
+start_date = today - timedelta(days=6)  # last 7 days including today
+
+# Filter registrations in the last 7 days
+recent_registrations = [
+    reg for reg in user_registrations
+    if start_date <= datetime.strptime(reg["registration_date"], "%Y-%m-%d") <= today
+]
+
+# Count registrations per day
+date_counts = Counter(
+    datetime.strptime(reg["registration_date"], "%Y-%m-%d").strftime("%Y-%m-%d")
+    for reg in recent_registrations
+)
+
+# Print counts for each day in the last 7 days (even if zero)
+print("Daily New User Count (last 7 days):\n")
+for i in range(7):
+    day = (start_date + timedelta(days=i)).strftime("%Y-%m-%d")
+    print(f"{day}: {date_counts.get(day, 0)} users")
