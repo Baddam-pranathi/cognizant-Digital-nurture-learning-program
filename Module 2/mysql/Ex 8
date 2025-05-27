@@ -1,0 +1,39 @@
+from datetime import datetime
+
+# Sample event data with dates
+events = [
+    {"name": "Tech Meetup", "date": "2025-06-01"},
+    {"name": "AI Summit", "date": "2025-06-10"},
+    {"name": "Startup Expo", "date": "2025-05-30"},
+    {"name": "Hackathon", "date": "2025-04-20"},  # Past event
+    {"name": "Data Science Bootcamp", "date": "2025-06-15"}
+]
+
+# Sample session data linked to events
+sessions = [
+    {"event": "Tech Meetup", "session_id": 1},
+    {"event": "Tech Meetup", "session_id": 2},
+    {"event": "AI Summit", "session_id": 3},
+    {"event": "AI Summit", "session_id": 4},
+    {"event": "AI Summit", "session_id": 5},
+    {"event": "Startup Expo", "session_id": 6},
+    {"event": "Hackathon", "session_id": 7},
+    {"event": "Data Science Bootcamp", "session_id": 8},
+    {"event": "Data Science Bootcamp", "session_id": 9},
+]
+
+today = datetime.today()
+
+# Filter upcoming events (date in future)
+upcoming_events = [e for e in events if datetime.strptime(e["date"], "%Y-%m-%d") >= today]
+
+# Count sessions per upcoming event
+session_count = {}
+for event in upcoming_events:
+    count = sum(1 for s in sessions if s["event"] == event["name"])
+    session_count[event["name"]] = count
+
+# Output
+print("Upcoming Events with Session Counts:\n")
+for event in upcoming_events:
+    print(f"{event['name']} ({event['date']}): {session_count.get(event['name'], 0)} sessions")
