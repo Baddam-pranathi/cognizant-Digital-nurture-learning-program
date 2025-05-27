@@ -1,0 +1,40 @@
+from collections import defaultdict
+
+# Sample registrations data
+registrations = [
+    {"user": "Sanya", "event": "Tech Meetup"},
+    {"user": "Alex", "event": "AI Summit"},
+    {"user": "Sanya", "event": "Startup Expo"},
+    {"user": "Maya", "event": "Hackathon"},
+    {"user": "Alex", "event": "Tech Meetup"},
+    {"user": "Priya", "event": "Startup Expo"},
+    {"user": "Sanya", "event": "Hackathon"},
+]
+
+# Sample feedback data
+feedbacks = [
+    {"user": "Sanya", "event": "Tech Meetup", "rating": 4},
+    {"user": "Alex", "event": "AI Summit", "rating": 5},
+    {"user": "Sanya", "event": "Startup Expo", "rating": 3},
+    {"user": "Maya", "event": "Hackathon", "rating": 4},
+    {"user": "Alex", "event": "Tech Meetup", "rating": 5},
+]
+
+# Count events attended per user
+events_attended = defaultdict(set)
+for reg in registrations:
+    events_attended[reg["user"]].add(reg["event"])
+
+# Count feedbacks submitted per user
+feedback_count = defaultdict(int)
+for fb in feedbacks:
+    feedback_count[fb["user"]] += 1
+
+# Output user engagement
+print("User Engagement Index:\n")
+for user in set(list(events_attended.keys()) + list(feedback_count.keys())):
+    attended = len(events_attended.get(user, []))
+    feedbacks_submitted = feedback_count.get(user, 0)
+    print(f"{user}:")
+    print(f"  Events Attended: {attended}")
+    print(f"  Feedbacks Submitted: {feedbacks_submitted}\n")
