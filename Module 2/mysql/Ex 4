@@ -1,0 +1,35 @@
+from datetime import datetime
+
+# Sample event session data
+event_sessions = [
+    {"event": "Tech Meetup", "session_time": "2025-06-01 10:30"},
+    {"event": "Tech Meetup", "session_time": "2025-06-01 09:00"},
+    {"event": "AI Summit", "session_time": "2025-06-10 11:15"},
+    {"event": "AI Summit", "session_time": "2025-06-10 12:00"},
+    {"event": "Startup Expo", "session_time": "2025-06-05 10:00"},
+    {"event": "Startup Expo", "session_time": "2025-06-05 14:00"},
+    {"event": "Hackathon", "session_time": "2025-06-03 11:45"},
+    {"event": "Hackathon", "session_time": "2025-06-03 08:00"},
+]
+
+# Convert session_time to datetime
+for session in event_sessions:
+    session["session_time"] = datetime.strptime(session["session_time"], "%Y-%m-%d %H:%M")
+
+# Define peak hours
+start_time = 10
+end_time = 12
+
+# Count sessions between 10 AM and 12 PM for each event
+peak_hours_count = {}
+
+for session in event_sessions:
+    hour = session["session_time"].hour
+    if start_time <= hour <= end_time:
+        event_name = session["event"]
+        peak_hours_count[event_name] = peak_hours_count.get(event_name, 0) + 1
+
+# Output
+print("Peak Session Hours (10 AM - 12 PM):\n")
+for event, count in peak_hours_count.items():
+    print(f"{event}: {count} sessions")
