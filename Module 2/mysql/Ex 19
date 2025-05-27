@@ -1,0 +1,58 @@
+from collections import defaultdict
+
+# Sample event data with status
+events = [
+    {"event": "Tech Meetup", "status": "completed"},
+    {"event": "AI Summit", "status": "upcoming"},
+    {"event": "Startup Expo", "status": "completed"},
+    {"event": "Hackathon", "status": "completed"},
+]
+
+# Sample registrations data
+registrations = [
+    {"user": "Sanya", "event": "Tech Meetup"},
+    {"user": "Alex", "event": "Tech Meetup"},
+    {"user": "Jordan", "event": "Startup Expo"},
+    {"user": "Maya", "event": "Hackathon"},
+    {"user": "Arjun", "event": "Tech Meetup"},
+    {"user": "Priya", "event": "Startup Expo"},
+]
+
+# Sample feedback data
+feedbacks = [
+    {"event": "Tech Meetup", "rating": 4},
+    {"event": "Tech Meetup", "rating": 5},
+    {"event": "Startup Expo", "rating": 3},
+    {"event": "Hackathon", "rating": 4},
+    {"event": "Hackathon", "rating": 5},
+]
+
+# Get set of completed events
+completed_events = {e["event"] for e in events if e["status"] == "completed"}
+
+# Count registrations per completed event
+registration_counts = defaultdict(int)
+for reg in registrations:
+    if reg["event"] in completed_events:
+        registration_counts[reg["event"]] += 1
+
+# Aggregate feedback ratings per completed event
+feedback_ratings = defaultdict(list)
+for fb in feedbacks:
+    if fb["event"] in completed_events:
+        feedback_ratings[fb["event"]].append(fb["rating"])
+
+# Calculate average ratings
+avg_ratings = {
+    event: (sum(ratings) / len(ratings) if ratings else 0)
+    for event, ratings in feedback_ratings.items()
+}
+
+# Output
+print("Completed Events with Total Registrations and Average Feedback Rating:\n")
+for event in completed_events:
+    total_regs = registration_counts.get(event, 0)
+    avg_rating = avg_ratings.get(event, 0)
+    print(f"{event}:")
+    print(f"  Total Registrations: {total_regs}")
+    print(f"  Average Feedback Rating: {avg_rating:.2f}\n")
