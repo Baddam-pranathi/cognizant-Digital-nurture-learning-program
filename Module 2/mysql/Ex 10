@@ -1,0 +1,27 @@
+# Sample registration data (event names)
+registrations = [
+    {"event": "Tech Meetup", "user": "Sanya"},
+    {"event": "AI Summit", "user": "Alex"},
+    {"event": "Startup Expo", "user": "Jordan"},
+    {"event": "Hackathon", "user": "Maya"},
+    {"event": "Data Science Bootcamp", "user": "Arjun"},
+]
+
+# Sample feedback data (event names)
+feedbacks = [
+    {"event": "Tech Meetup", "user": "Sanya", "rating": 4},
+    {"event": "AI Summit", "user": "Alex", "rating": 5},
+    {"event": "Hackathon", "user": "Maya", "rating": 3},
+]
+
+# Extract sets of events with registrations and events with feedback
+registered_events = set(reg["event"] for reg in registrations)
+events_with_feedback = set(fb["event"] for fb in feedbacks)
+
+# Events with registrations but no feedback
+events_no_feedback = registered_events - events_with_feedback
+
+# Output
+print("Events with registrations but no feedback:\n")
+for event in events_no_feedback:
+    print(event)
