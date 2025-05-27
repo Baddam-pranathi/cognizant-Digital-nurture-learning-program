@@ -1,0 +1,25 @@
+from collections import defaultdict
+
+# Sample registrations data
+registrations = [
+    {"user": "Sanya", "event": "Tech Meetup"},
+    {"user": "Alex", "event": "AI Summit"},
+    {"user": "Sanya", "event": "Tech Meetup"},
+    {"user": "Maya", "event": "Hackathon"},
+    {"user": "Alex", "event": "Tech Meetup"},
+    {"user": "Alex", "event": "Tech Meetup"},
+]
+
+# Count occurrences of each (user, event) pair
+reg_count = defaultdict(int)
+for reg in registrations:
+    key = (reg["user"], reg["event"])
+    reg_count[key] += 1
+
+# Identify duplicates
+duplicates = {k: v for k, v in reg_count.items() if v > 1}
+
+# Output
+print("Duplicate Registrations Detected:\n")
+for (user, event), count in duplicates.items():
+    print(f"User '{user}' is registered {count} times for event '{event}'")
