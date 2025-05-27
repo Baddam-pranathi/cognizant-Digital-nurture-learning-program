@@ -1,0 +1,25 @@
+# Sample events
+events = [
+    {"event": "Tech Meetup"},
+    {"event": "AI Summit"},
+    {"event": "Startup Expo"},
+    {"event": "Hackathon"},
+]
+
+# Sample sessions
+sessions = [
+    {"event": "Tech Meetup", "session_id": 1},
+    {"event": "Startup Expo", "session_id": 2},
+    {"event": "Startup Expo", "session_id": 3},
+]
+
+# Get set of events that have at least one session
+events_with_sessions = {s["event"] for s in sessions}
+
+# Find events without sessions
+events_without_sessions = [e["event"] for e in events if e["event"] not in events_with_sessions]
+
+# Output
+print("Events Without Sessions Scheduled:\n")
+for event in events_without_sessions:
+    print(event)
