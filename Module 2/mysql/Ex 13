@@ -1,0 +1,41 @@
+from collections import defaultdict
+
+# Sample event data with city info
+events = [
+    {"event": "Tech Meetup", "city": "Bangalore"},
+    {"event": "AI Summit", "city": "Mumbai"},
+    {"event": "Startup Expo", "city": "Bangalore"},
+    {"event": "Hackathon", "city": "Delhi"},
+    {"event": "Data Science Bootcamp", "city": "Mumbai"},
+]
+
+# Sample feedback data with event and rating
+feedbacks = [
+    {"event": "Tech Meetup", "rating": 4},
+    {"event": "Tech Meetup", "rating": 5},
+    {"event": "AI Summit", "rating": 3},
+    {"event": "AI Summit", "rating": 4},
+    {"event": "Startup Expo", "rating": 5},
+    {"event": "Hackathon", "rating": 2},
+    {"event": "Data Science Bootcamp", "rating": 4},
+    {"event": "Data Science Bootcamp", "rating": 5},
+]
+
+# Map event to city
+event_city_map = {e["event"]: e["city"] for e in events}
+
+# Aggregate ratings per city
+city_ratings = defaultdict(list)
+
+for fb in feedbacks:
+    city = event_city_map.get(fb["event"])
+    if city:
+        city_ratings[city].append(fb["rating"])
+
+# Calculate average rating per city
+city_avg_rating = {city: sum(ratings) / len(ratings) for city, ratings in city_ratings.items()}
+
+# Output
+print("Average Rating per City:\n")
+for city, avg_rating in city_avg_rating.items():
+    print(f"{city}: {avg_rating:.2f}")
