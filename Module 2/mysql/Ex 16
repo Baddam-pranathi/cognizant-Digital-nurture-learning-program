@@ -1,0 +1,38 @@
+from datetime import datetime, timedelta
+
+# Sample user data with account creation dates
+users = [
+    {"user": "Sanya", "created_at": "2025-04-30"},
+    {"user": "Alex", "created_at": "2025-05-10"},
+    {"user": "Jordan", "created_at": "2025-05-20"},
+    {"user": "Maya", "created_at": "2025-05-25"},
+    {"user": "Arjun", "created_at": "2025-05-26"},
+]
+
+# Sample registrations data
+registrations = [
+    {"user": "Sanya", "event": "Tech Meetup"},
+    {"user": "Alex", "event": "AI Summit"},
+    {"user": "Maya", "event": "Startup Expo"},
+]
+
+# Define today and 30 days ago
+today = datetime.strptime("2025-05-27", "%Y-%m-%d")
+days_ago_30 = today - timedelta(days=30)
+
+# Find users created in last 30 days
+recent_users = {
+    u["user"] for u in users
+    if days_ago_30 <= datetime.strptime(u["created_at"], "%Y-%m-%d") <= today
+}
+
+# Find users who have registered for events
+registered_users = {r["user"] for r in registrations}
+
+# Users created recently but not registered
+unregistered_active_users = recent_users - registered_users
+
+# Output
+print("Users created in last 30 days but NOT registered for any events:\n")
+for user in unregistered_active_users:
+    print(user)
