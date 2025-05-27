@@ -1,0 +1,29 @@
+from collections import defaultdict
+from datetime import datetime
+
+# Sample session data with start and end times
+sessions = [
+    {"event": "Tech Meetup", "session_id": 1, "start": "2025-05-01 10:00", "end": "2025-05-01 11:30"},
+    {"event": "Tech Meetup", "session_id": 2, "start": "2025-05-01 14:00", "end": "2025-05-01 15:00"},
+    {"event": "AI Summit", "session_id": 3, "start": "2025-05-03 09:00", "end": "2025-05-03 10:00"},
+    {"event": "Startup Expo", "session_id": 4, "start": "2025-05-05 13:00", "end": "2025-05-05 14:30"},
+    {"event": "Startup Expo", "session_id": 5, "start": "2025-05-05 15:00", "end": "2025-05-05 16:00"},
+]
+
+# Helper to calculate duration in minutes
+def duration_minutes(start_str, end_str):
+    start = datetime.strptime(start_str, "%Y-%m-%d %H:%M")
+    end = datetime.strptime(end_str, "%Y-%m-%d %H:%M")
+    return (end - start).total_seconds() / 60
+
+# Collect durations by event
+durations_by_event = defaultdict(list)
+for session in sessions:
+    duration = duration_minutes(session["start"], session["end"])
+    durations_by_event[session["event"]].append(duration)
+
+# Compute averages
+print("Average Session Duration per Event (in minutes):\n")
+for event, durations in durations_by_event.items():
+    avg_duration = sum(durations) / len(durations)
+    print(f"{event}: {avg_duration:.2f} minutes")
