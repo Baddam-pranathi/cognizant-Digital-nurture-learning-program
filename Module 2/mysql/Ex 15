@@ -1,0 +1,55 @@
+from datetime import datetime
+
+# Sample sessions data with event, session id, start and end times
+sessions = [
+    {"event": "Tech Meetup", "session_id": 1, "start": "2025-06-01 09:00", "end": "2025-06-01 10:30"},
+    {"event": "Tech Meetup", "session_id": 2, "start": "2025-06-01 10:00", "end": "2025-06-01 11:00"},  # overlaps with session 1
+    {"event": "Tech Meetup", "session_id": 3, "start": "2025-06-01 11:15", "end": "2025-06-01 12:00"},
+    {"event": "AI Summit", "session_id": 4, "start": "2025-06-10 14:00", "end": "2025-06-10 15:00"},
+    {"event": "AI Summit", "session_id": 5, "start": "2025-06-10 15:00", "end": "2025-06-10 16:00"},
+    {"event": "Startup Expo", "session_id": 6, "start": "2025-05-30 09:00", "end": "2025-05-30 10:00"},
+    {"event": "Startup Expo", "session_id": 7, "start": "2025-05-30 09:30", "end": "2025-05-30 11:00"},  # overlaps with session 6
+]
+
+# Convert string time to datetime for comparison
+for s in sessions:
+    s["start_dt"] = datetime.strptime(s["start"], "%Y-%m-%d %H:%M")
+    s["end_dt"] = datetime.strptime(s["end"], "%Y-%m-%d %H:%M")
+
+# Group sessions by event
+from collections import defaultdict
+event_sessions = defaultdict(list)
+for s in sessions:
+    event_sessions[s["event"]].append(s)
+
+# Function to check if two sessions overlap
+def sessions_overlap(s1, s2):
+    return s1["start_dt"] < s2["end_dt"] and s2["start_dt"] < s1["end_dt"]
+
+# Find overlapping sessions within the same event
+conflicts = []
+
+for event, sess_list in event_sessions.items():
+    # Sort sessions by start time for easier comparison
+    sess_list.sort(key=lambda x: x["start_dt"])
+    
+    for i in range(len(sess_list)):
+        for j in range(i + 1, len(sess_list)):
+            if sessions_overlap(sess_list[i], sess_list[j]):
+                conflicts.append({
+                    "event": event,
+                    "session1": sess_list[i]["session_id"],
+                    "session2": sess_list[j]["session_id"],
+                    "session1_time": (sess_list[i]["start"], sess_list[i]["end"]),
+                    "session2_time": (sess_list[j]["start"], sess_list[j]["end"]),
+                })
+
+# Output conflicts
+print("Overlapping Sessions Within the Same Event:\n")
+if conflicts:
+    for c in conflicts:
+        print(f"Event: {c['event']}")
+        print(f"  Session {c['session1']} ({c['session1_time'][0]} to {c['session1_time'][1]}) conflicts with")
+        print(f"  Session {c['session2']} ({c['session2_time'][0]} to {c['session2_time'][1]})\n")
+else:
+    print("No conflicts found.")
