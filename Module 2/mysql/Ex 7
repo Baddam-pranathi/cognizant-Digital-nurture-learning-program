@@ -1,0 +1,20 @@
+# Sample feedback data
+feedback_data = [
+    {"user": "Sanya", "event": "Tech Meetup", "rating": 4, "comment": "Great session!"},
+    {"user": "Alex", "event": "AI Summit", "rating": 2, "comment": "Too technical, hard to follow."},
+    {"user": "Jordan", "event": "Startup Expo", "rating": 3, "comment": "Good, but long."},
+    {"user": "Maya", "event": "Hackathon", "rating": 1, "comment": "Unorganized event."},
+    {"user": "Arjun", "event": "Data Science Bootcamp", "rating": 5, "comment": "Excellent!"}
+]
+
+# Filter low-rated feedbacks (rating < 3)
+low_feedback_alerts = [
+    {"user": fb["user"], "event": fb["event"], "rating": fb["rating"], "comment": fb["comment"]}
+    for fb in feedback_data
+    if fb["rating"] < 3
+]
+
+# Output
+print("Low Feedback Alerts (Ratings < 3):\n")
+for alert in low_feedback_alerts:
+    print(f"User: {alert['user']}, Event: {alert['event']}, Rating: {alert['rating']}, Comment: \"{alert['comment']}\"")
