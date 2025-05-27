@@ -1,0 +1,33 @@
+from datetime import datetime
+
+# Sample user data
+user = {
+    "name": "Sanya",
+    "city": "Bangalore"
+}
+
+# Sample event data
+events = [
+    {"name": "Tech Meetup", "city": "Bangalore", "date": "2025-06-01", "registered_users": ["Sanya"]},
+    {"name": "AI Summit", "city": "Mumbai", "date": "2025-06-10", "registered_users": ["Sanya"]},
+    {"name": "Startup Expo", "city": "Bangalore", "date": "2025-05-30", "registered_users": ["Sanya"]},
+    {"name": "Hackathon", "city": "Bangalore", "date": "2025-06-05", "registered_users": ["Alex", "Jordan"]},
+    {"name": "Data Science Bootcamp", "city": "Bangalore", "date": "2025-06-15", "registered_users": ["Sanya"]}
+]
+
+# Filter events: same city + user is registered
+user_events = [
+    event for event in events
+    if event["city"] == user["city"] and user["name"] in event["registered_users"]
+]
+
+# Sort by date
+user_events_sorted = sorted(
+    user_events,
+    key=lambda e: datetime.strptime(e["date"], "%Y-%m-%d")
+)
+
+# Output
+print(f"Upcoming events in {user['city']} for {user['name']}:\n")
+for event in user_events_sorted:
+    print(f"{event['name']} - {event['date']}")
