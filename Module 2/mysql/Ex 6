@@ -1,0 +1,30 @@
+from collections import defaultdict
+
+# Sample resource upload data
+resources = [
+    {"event": "Tech Meetup", "type": "pdf"},
+    {"event": "Tech Meetup", "type": "image"},
+    {"event": "Tech Meetup", "type": "link"},
+    {"event": "Tech Meetup", "type": "pdf"},
+    {"event": "AI Summit", "type": "pdf"},
+    {"event": "AI Summit", "type": "link"},
+    {"event": "AI Summit", "type": "link"},
+    {"event": "Startup Expo", "type": "image"},
+    {"event": "Startup Expo", "type": "image"},
+    {"event": "Hackathon", "type": "pdf"},
+    {"event": "Hackathon", "type": "image"},
+    {"event": "Hackathon", "type": "link"},
+    {"event": "Hackathon", "type": "link"},
+]
+
+# Initialize summary dictionary
+event_summary = defaultdict(lambda: {"pdf": 0, "image": 0, "link": 0})
+
+# Populate summary
+for res in resources:
+    event_summary[res["event"]][res["type"]] += 1
+
+# Output
+print("Event Resource Summary:\n")
+for event, counts in event_summary.items():
+    print(f"{event}: PDFs: {counts['pdf']}, Images: {counts['image']}, Links: {counts['link']}")
