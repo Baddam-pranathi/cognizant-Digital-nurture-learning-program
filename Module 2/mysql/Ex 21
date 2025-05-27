@@ -1,0 +1,25 @@
+from collections import Counter
+
+# Sample feedback data
+feedbacks = [
+    {"user": "Sanya", "event": "Tech Meetup", "rating": 4},
+    {"user": "Alex", "event": "AI Summit", "rating": 5},
+    {"user": "Sanya", "event": "Startup Expo", "rating": 3},
+    {"user": "Maya", "event": "Hackathon", "rating": 4},
+    {"user": "Alex", "event": "Tech Meetup", "rating": 5},
+    {"user": "Sanya", "event": "Hackathon", "rating": 4},
+    {"user": "Arjun", "event": "Startup Expo", "rating": 2},
+    {"user": "Sanya", "event": "Cloud Conference", "rating": 5},
+    {"user": "Maya", "event": "AI Summit", "rating": 3},
+]
+
+# Count feedback entries per user
+feedback_counts = Counter(fb["user"] for fb in feedbacks)
+
+# Get top 5 users by feedback count
+top_feedback_providers = feedback_counts.most_common(5)
+
+# Output
+print("Top 5 Feedback Providers:\n")
+for user, count in top_feedback_providers:
+    print(f"{user}: {count} feedback entries")
