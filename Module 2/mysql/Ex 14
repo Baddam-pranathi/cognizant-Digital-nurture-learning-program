@@ -1,0 +1,27 @@
+from collections import Counter
+
+# Sample registrations data
+registrations = [
+    {"user": "Sanya", "event": "Tech Meetup"},
+    {"user": "Alex", "event": "AI Summit"},
+    {"user": "Jordan", "event": "Tech Meetup"},
+    {"user": "Maya", "event": "Startup Expo"},
+    {"user": "Arjun", "event": "Tech Meetup"},
+    {"user": "Priya", "event": "AI Summit"},
+    {"user": "Karan", "event": "Data Science Bootcamp"},
+    {"user": "Riya", "event": "Startup Expo"},
+    {"user": "Dev", "event": "Tech Meetup"},
+    {"user": "Aisha", "event": "AI Summit"},
+    {"user": "Neha", "event": "Tech Meetup"},
+]
+
+# Count registrations per event
+event_counts = Counter(reg["event"] for reg in registrations)
+
+# Get top 3 events by registrations
+top_3_events = event_counts.most_common(3)
+
+# Output
+print("Top 3 Most Registered Events:\n")
+for event, count in top_3_events:
+    print(f"{event}: {count} registrations")
