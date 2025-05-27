@@ -1,0 +1,23 @@
+from collections import Counter
+
+# Sample session data with speaker info
+sessions = [
+    {"event": "Tech Meetup", "session_id": 1, "speaker": "Alice"},
+    {"event": "Tech Meetup", "session_id": 2, "speaker": "Bob"},
+    {"event": "AI Summit", "session_id": 3, "speaker": "Alice"},
+    {"event": "Startup Expo", "session_id": 4, "speaker": "Charlie"},
+    {"event": "Data Science Bootcamp", "session_id": 5, "speaker": "Bob"},
+    {"event": "Hackathon", "session_id": 6, "speaker": "David"},
+    {"event": "Cloud Conference", "session_id": 7, "speaker": "Alice"},
+]
+
+# Count sessions per speaker
+speaker_counts = Counter(session["speaker"] for session in sessions)
+
+# Find speakers handling more than one session
+multi_session_speakers = [speaker for speaker, count in speaker_counts.items() if count > 1]
+
+# Output
+print("Speakers handling more than one session:\n")
+for speaker in multi_session_speakers:
+    print(f"- {speaker} ({speaker_counts[speaker]} sessions)")
