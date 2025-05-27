@@ -1,0 +1,38 @@
+from datetime import datetime
+
+# Sample event data with organizer and status info
+events = [
+    {"name": "Tech Meetup", "organizer": "Alice", "date": "2025-06-01", "status": "upcoming"},
+    {"name": "AI Summit", "organizer": "Bob", "date": "2025-04-15", "status": "completed"},
+    {"name": "Startup Expo", "organizer": "Alice", "date": "2025-05-30", "status": "cancelled"},
+    {"name": "Hackathon", "organizer": "Charlie", "date": "2025-03-10", "status": "completed"},
+    {"name": "Data Science Bootcamp", "organizer": "Alice", "date": "2025-06-15", "status": "upcoming"},
+    {"name": "Cloud Conference", "organizer": "Bob", "date": "2025-07-20", "status": "upcoming"},
+    {"name": "Cybersecurity Forum", "organizer": "Charlie", "date": "2025-02-05", "status": "completed"},
+]
+
+# Aggregate data: organizer -> status -> count
+organizer_summary = {}
+
+for event in events:
+    org = event["organizer"]
+    status = event["status"]
+    
+    if org not in organizer_summary:
+        organizer_summary[org] = {"upcoming": 0, "completed": 0, "cancelled": 0}
+        
+    if status in organizer_summary[org]:
+        organizer_summary[org][status] += 1
+    else:
+        # If unexpected status, add it dynamically (optional)
+        organizer_summary[org][status] = 1
+
+# Output
+print("Organizer Event Summary:\n")
+for org, status_counts in organizer_summary.items():
+    total_events = sum(status_counts.values())
+    print(f"Organizer: {org}")
+    print(f"  Total Events: {total_events}")
+    print(f"  Upcoming: {status_counts.get('upcoming', 0)}")
+    print(f"  Completed: {status_counts.get('completed', 0)}")
+    print(f"  Cancelled: {status_counts.get('cancelled', 0)}\n")
