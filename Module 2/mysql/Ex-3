@@ -1,0 +1,41 @@
+from datetime import datetime, timedelta
+
+# Today's date
+today = datetime.today()
+cutoff_date = today - timedelta(days=90)
+
+# Sample user data
+users = [
+    {"name": "Sanya"},
+    {"name": "Alex"},
+    {"name": "Jordan"},
+    {"name": "Maya"}
+]
+
+# Sample event registration data
+event_registrations = [
+    {"event": "Tech Meetup", "user": "Sanya", "date": "2025-05-10"},
+    {"event": "AI Summit", "user": "Alex", "date": "2025-01-15"},
+    {"event": "Startup Expo", "user": "Maya", "date": "2025-02-01"},
+    {"event": "Hackathon", "user": "Sanya", "date": "2025-04-05"},
+]
+
+# Convert event dates to datetime
+for reg in event_registrations:
+    reg["date"] = datetime.strptime(reg["date"], "%Y-%m-%d")
+
+# Find users with no registrations in last 90 days
+inactive_users = []
+
+for user in users:
+    recent_registrations = [
+        reg for reg in event_registrations
+        if reg["user"] == user["name"] and reg["date"] >= cutoff_date
+    ]
+    if not recent_registrations:
+        inactive_users.append(user["name"])
+
+# Output
+print("Inactive users (no registrations in last 90 days):\n")
+for name in inactive_users:
+    print(name)
