@@ -1,0 +1,25 @@
+# Sample events
+events = [
+    {"event": "Tech Meetup"},
+    {"event": "AI Summit"},
+    {"event": "Startup Expo"},
+    {"event": "Hackathon"},
+]
+
+# Sample resources linked to events
+resources = [
+    {"event": "Tech Meetup", "type": "PDF"},
+    {"event": "Tech Meetup", "type": "Image"},
+    {"event": "Startup Expo", "type": "Link"},
+]
+
+# Get set of events with resources
+events_with_resources = {res["event"] for res in resources}
+
+# Find events with no resources
+events_no_resources = [e["event"] for e in events if e["event"] not in events_with_resources]
+
+# Output
+print("Events with NO resources uploaded:\n")
+for event in events_no_resources:
+    print(event)
