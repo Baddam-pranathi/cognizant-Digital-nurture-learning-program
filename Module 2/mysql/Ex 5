@@ -1,0 +1,35 @@
+from collections import defaultdict
+
+# Sample registration data
+registrations = [
+    {"user": "Sanya", "city": "Bangalore"},
+    {"user": "Alex", "city": "Mumbai"},
+    {"user": "Jordan", "city": "Bangalore"},
+    {"user": "Maya", "city": "Delhi"},
+    {"user": "Arjun", "city": "Bangalore"},
+    {"user": "Priya", "city": "Mumbai"},
+    {"user": "Karan", "city": "Delhi"},
+    {"user": "Riya", "city": "Chennai"},
+    {"user": "Dev", "city": "Chennai"},
+    {"user": "Aisha", "city": "Hyderabad"},
+    {"user": "Neha", "city": "Bangalore"},
+    {"user": "Rahul", "city": "Delhi"},
+    {"user": "Zoya", "city": "Bangalore"},
+]
+
+# Create a dictionary with city as key and a set of users as value
+city_user_map = defaultdict(set)
+
+for reg in registrations:
+    city_user_map[reg["city"]].add(reg["user"])
+
+# Count distinct users per city
+city_user_counts = [(city, len(users)) for city, users in city_user_map.items()]
+
+# Sort by count descending and take top 5
+top_cities = sorted(city_user_counts, key=lambda x: x[1], reverse=True)[:5]
+
+# Output
+print("Top 5 Most Active Cities (by distinct user registrations):\n")
+for city, count in top_cities:
+    print(f"{city}: {count} users")
