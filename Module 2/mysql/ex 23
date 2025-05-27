@@ -1,0 +1,36 @@
+from collections import defaultdict
+from datetime import datetime, timedelta
+import calendar
+
+# Sample registrations with timestamps
+registrations = [
+    {"user": "Sanya", "registered_at": "2024-06-15"},
+    {"user": "Alex", "registered_at": "2024-07-03"},
+    {"user": "Maya", "registered_at": "2024-09-20"},
+    {"user": "Arjun", "registered_at": "2024-12-11"},
+    {"user": "Jordan", "registered_at": "2025-01-05"},
+    {"user": "Priya", "registered_at": "2025-03-25"},
+    {"user": "Sanya", "registered_at": "2025-03-27"},
+    {"user": "Alex", "registered_at": "2025-04-15"},
+    {"user": "Maya", "registered_at": "2025-05-20"},
+]
+
+# Define time range: last 12 months
+today = datetime.strptime("2025-05-27", "%Y-%m-%d")
+start_month = (today.replace(day=1) - timedelta(days=1)).replace(day=1)
+months = [(start_month - timedelta(days=30*i)).replace(day=1) for i in reversed(range(12))]
+month_labels = [m.strftime("%Y-%m") for m in months]
+
+# Initialize month-wise count
+monthly_counts = defaultdict(int)
+for reg in registrations:
+    reg_date = datetime.strptime(reg["registered_at"], "%Y-%m-%d")
+    reg_month = reg_date.strftime("%Y-%m")
+    if reg_month in month_labels:
+        monthly_counts[reg_month] += 1
+
+# Display results
+print("Month-wise Registration Count (Last 12 Months):\n")
+for month in month_labels:
+    count = monthly_counts.get(month, 0)
+    print(f"{month}: {count}")
