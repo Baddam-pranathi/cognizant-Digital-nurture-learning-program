@@ -1,0 +1,26 @@
+# Sample event feedback data
+events = [
+    {"name": "Tech Meetup", "feedback_ratings": [4, 5, 5, 4, 5, 4, 5, 4, 5, 4]},
+    {"name": "AI Summit", "feedback_ratings": [5, 5, 5, 4, 4, 5, 5, 5, 4, 5, 5]},
+    {"name": "Startup Expo", "feedback_ratings": [3, 3, 4, 4, 3]},
+    {"name": "Hackathon", "feedback_ratings": [4, 4, 4, 4, 4, 4, 5, 4, 4, 4]},
+    {"name": "Data Science Bootcamp", "feedback_ratings": [5, 5, 5, 4, 5, 5, 5, 4, 5, 5, 4]}
+]
+
+# Filter events with at least 10 feedbacks
+events_with_enough_feedback = [
+    {
+        "name": event["name"],
+        "avg_rating": sum(event["feedback_ratings"]) / len(event["feedback_ratings"])
+    }
+    for event in events
+    if len(event["feedback_ratings"]) >= 10
+]
+
+# Sort by average rating (highest first)
+top_rated_events = sorted(events_with_enough_feedback, key=lambda x: x["avg_rating"], reverse=True)
+
+# Output
+print("Top Rated Events (min 10 feedbacks):\n")
+for event in top_rated_events:
+    print(f"{event['name']} - Average Rating: {event['avg_rating']:.2f}")
